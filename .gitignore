@@ -1,0 +1,21 @@
+# === Obsidian ===
+# Estado de la interfaz por dispositivo (causa conflictos al sincronizar)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Caché y plugins locales de Obsidian
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
+# Papelera de Obsidian
+.trash/
+
+# === Archivos temporales / de trabajo ===
+_calc_extracted_tmp.txt
+*.tmp
+*~
+
+# === Sistema operativo ===
+.DS_Store
+Thumbs.db
+desktop.ini

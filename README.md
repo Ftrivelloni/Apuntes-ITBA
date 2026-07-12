@@ -6,4 +6,4 @@ Vault de [Obsidian](https://obsidian.md) con apuntes de materias del ITBA carrer
 
 - **TLA/** — Autómatas, Teoría de Lenguajes y Compiladores 
 - **Proba/** — Probabilidad y Estadistica
-
+-

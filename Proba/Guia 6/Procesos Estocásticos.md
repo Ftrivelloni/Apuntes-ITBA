@@ -114,11 +114,9 @@ Definimos el tiempo hasta la $k$-ésima notificación, $T(k)$, con espacio de es
 
 $$\tau(k) = T(k) - T(k-1)$$
 
-**Resultado clave:** estos tiempos de espera son **i.i.d. exponenciales** de parámetro $\lambda$. La demostración usa una igualdad de eventos: el primer evento ocurre después de $t$ **si y sólo si** no hubo eventos en $[0,t]$:
+**Resultado clave:** estos tiempos de espera son **i.i.d. exponenciales** de parámetro $\lambda$. La idea intuitiva: el primer evento ocurre después de $t$ **si y sólo si** no hubo eventos en $[0,t]$, es decir $\{\tau(1) > t\} = \{N(t) = 0\}$, cuya probabilidad es $e^{-\lambda t}$:
 
-$$\{\tau(1) > t\} = \{N(t) = 0\} \implies P(\tau(1) > t) = P(N(t) = 0) = e^{-\lambda t}$$
-
-$$\implies F_{\tau(1)}(t) = 1 - e^{-\lambda t} \ (t > 0) \implies \boxed{\tau(k) \sim \mathcal{E}(\lambda) \text{ i.i.d.}}$$
+$$\boxed{\tau(k) \sim \mathcal{E}(\lambda) \text{ i.i.d.}}$$
 
 ### Tiempo hasta el $n$-ésimo evento
 

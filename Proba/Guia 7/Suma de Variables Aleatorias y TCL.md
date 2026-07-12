@@ -107,7 +107,7 @@ El promedio **siempre está centrado en $\mu$**, pero su desvío $\frac{\sigma}{
 
 ### Ley de los Grandes Números (LGN)
 
-La concentración se demuestra con Čebyšëv aplicada al promedio:
+La concentración se justifica aplicando Čebyšëv al promedio:
 
 $$P\big(|\overline{X}_n - \mu| \geq \varepsilon\big) \leq \frac{V(\overline{X}_n)}{\varepsilon^2} = \frac{\sigma^2}{n\,\varepsilon^2} \xrightarrow[n \to +\infty]{} 0$$
 
@@ -217,3 +217,9 @@ $$P\big(148 \leq \overline{M}_{104} \leq 153\big) \approx \Phi(1.3682) - \Phi(-0
 - **Corrección por continuidad** al aproximar discretas; condiciones $np > 10$ y $n(1-p) > 10$ (o $\lambda > 10$) para que la aproximación sea buena.
 
 > **Cierre.** El TCL es, en palabras de la presentación, *"el mejor teorema del mundo mundial"*. **Ojo:** no vale si las variables promediadas **no son independientes** o **no tienen la misma distribución**.
+
+> [!tip] ¿Qué herramienta uso en un ejercicio?
+> - **Suma de variables conocidas de la misma familia** → usar las reglas de cierre (evita rehacer la convolución).
+> - **Cota de probabilidad sin conocer la distribución** → Markov (variable no negativa) o Čebyšëv (alejamiento de la media).
+> - **"¿A qué valor se acerca el promedio cuando $n$ es grande?"** → LGN (converge a $\mu$).
+> - **"Probabilidad de que la suma/promedio de muchas i.i.d. caiga en un rango"** → TCL (aproximación normal). Si la variable es discreta, aplicar **corrección por continuidad**.

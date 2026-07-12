@@ -181,6 +181,14 @@ Para esta variable, $\text{mediana}(T) \approx 34.21$. Más generalmente, para $
 
 ---
 
+## Distribuciones continuas conocidas
+
+> [!tip] ¿Cuándo usar cada una?
+> - **Uniforme $\mathcal{U}(a,b)$:** cuando todos los valores de un intervalo son igual de probables (densidad constante). Palabra clave: "sin predilección por ningún momento".
+> - **Exponencial $\mathcal{E}(\lambda)$:** tiempos de espera / hasta una falla, **sin desgaste** (falta de memoria). Es el tiempo entre eventos de un proceso de Poisson.
+> - **Gamma $\Gamma(\alpha,\lambda)$:** generaliza la exponencial y **sí** modela desgaste; es la suma de $\alpha$ exponenciales. Con $\alpha=1$ es una exponencial.
+> - **Normal $\mathcal{N}(\mu,\sigma)$:** el modelo más flexible (cualquier $\mu$ y $\sigma$), simétrico; aparece en mediciones con error y como límite de sumas (TCL, Guía 7).
+
 ## Distribución Uniforme
 
 Otro ejemplo motivador: la **hora del amanecer**. En cierta época amanece entre las 6:15 y 6:20 AM, sin predilección por ningún momento del intervalo (densidad constante). Definimos:
@@ -219,7 +227,7 @@ Para hallar $k$ debemos integrar sobre $(0, +\infty)$. La lógica es similar a l
 
 $$\int_0^{+\infty} k\, e^{-t/1000}\, dt = \lim_{M\to+\infty} k\left[-1000\, e^{-t/1000}\right]_0^M = 1000\,k = 1 \implies k = \frac{1}{1000}$$
 
-La acumulada es $F_{T_F}(t) = 1 - e^{-t/1000}$ para $t > 0$. Para los momentos se usa **integración por partes** (y L'Hôpital para el límite del término evaluado): $E(T_F) = 1000$ y $E(T_F^2) = 2 \cdot 1000^2$, de donde $V(T_F) = 2\cdot1000^2 - 1000^2 = 1000^2$.
+La acumulada es $F_{T_F}(t) = 1 - e^{-t/1000}$ para $t > 0$. Sus momentos son $E(T_F) = 1000$ y $E(T_F^2) = 2 \cdot 1000^2$, de donde $V(T_F) = 2\cdot1000^2 - 1000^2 = 1000^2$.
 
 ### Generalización
 
@@ -238,9 +246,7 @@ El ejemplo corresponde a $\lambda = \tfrac{1}{1000}$.
 > $$P(T > a + b \mid T > a) = P(T > b)$$
 > Si $T$ se mide en horas, $a = 10$, $b = 1$: la probabilidad de que el dispositivo dure más de 11 horas (sabiendo que ya duró 10) es la misma que la de durar más de 1 hora **desde cero**. Es como si el dispositivo "volviera a empezar" sin desgaste. Esta es una suposición fuerte y muchas veces poco realista.
 
-La demostración usa $P(T>t) = e^{-\lambda t}$:
-
-$$P(T > a+b \mid T > a) = \frac{P(T > a+b)}{P(T > a)} = \frac{e^{-\lambda(a+b)}}{e^{-\lambda a}} = e^{-\lambda b} = P(T > b)$$
+Se apoya en que $P(T>t) = e^{-\lambda t}$, de donde $P(T > a+b \mid T > a) = \frac{e^{-\lambda(a+b)}}{e^{-\lambda a}} = e^{-\lambda b} = P(T > b)$.
 
 > **Cuidado:** la propiedad vale **solo en ese sentido**. NO valen $P(T<a+b\mid T>a)=P(T<b)$ ni $P(T>a+b\mid T<a)=P(T>b)$.
 
@@ -292,7 +298,7 @@ Interpretación gráfica:
 
 ### Varianza
 
-Se demuestra (con la sustitución $z = \tfrac{x-\mu}{\sigma}$ y las integrales notables de la normal estándar) que:
+Con la sustitución $z = \tfrac{x-\mu}{\sigma}$ se obtiene:
 
 $$E(X^2) = \mu^2 + \sigma^2 \implies V(X) = E(X^2) - E^2(X) = \mu^2 + \sigma^2 - \mu^2 = \sigma^2$$
 

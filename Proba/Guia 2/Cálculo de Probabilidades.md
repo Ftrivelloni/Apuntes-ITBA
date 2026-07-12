@@ -87,7 +87,7 @@ $$f_{A\cup B}=\frac{n_{A\cup B}}{n}=\frac{n_A+n_B}{n}=\frac{n_A}{n}+\frac{n_B}{n
 
 ## Propiedades derivadas
 
-Lo notable es que con solo estos tres axiomas se demuestran muchas propiedades útiles. Todas se prueban escribiendo un evento como unión de partes mutuamente excluyentes y aplicando el tercer axioma.
+Lo notable es que de estos tres axiomas se deducen muchas propiedades útiles (todas surgen de escribir un evento como unión de partes mutuamente excluyentes y aplicar el tercer axioma). Estas son las que conviene tener a mano para los ejercicios:
 
 **Vacío:** $P(\varnothing)=0$. Como $S$ y $\varnothing$ son excluyentes y $S\cup\varnothing=S$, resulta $P(S)+P(\varnothing)=P(S)$, de donde $P(\varnothing)=0$.
 

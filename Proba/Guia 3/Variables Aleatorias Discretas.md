@@ -222,7 +222,8 @@ Sea $X \sim Bi(n, p)$. Entonces:
 
 $$\boxed{X \sim Bi(n,p) \implies E(X) = n \cdot p, \quad V(X) = n \cdot p \cdot (1-p)}$$
 
-La demostración de $E(X) = np$ usa la identidad $k \binom{n}{k} = n \binom{n-1}{k-1}$ y el Binomio de Newton. La de la varianza parte de $E(X^2)$ escribiendo $k^2 = k(k-1) + k$.
+> [!info] ¿Cuándo usar la Binomial?
+> Cuando hay una **cantidad fija** $n$ de experimentos **independientes**, cada uno con dos resultados (éxito/fracaso) y la **misma** probabilidad de éxito $p$. La variable cuenta los éxitos. Palabras clave: "con reposición", "de $n$ intentos, cuántos...".
 
 **Cálculos para $B \sim Bi(5, \tfrac{2}{5})$:**
 
@@ -264,6 +265,9 @@ Sea $X \sim H(N, M, n)$. Entonces:
 | Varianza | $V(X) = n \cdot \dfrac{M}{N} \cdot \left(1 - \dfrac{M}{N}\right) \cdot \dfrac{N-n}{N-1}$ |
 
 $$\boxed{X \sim H(N,M,n) \implies E(X) = n \cdot \frac{M}{N}, \quad V(X) = n \cdot \frac{M}{N}\left(1 - \frac{M}{N}\right)\frac{N-n}{N-1}}$$
+
+> [!info] ¿Cuándo usar la Hipergeométrica?
+> Igual que la binomial pero **SIN reposición**: de un conjunto de $N$ elementos con $M$ "de interés", se extraen $n$ sin reponer y se cuenta cuántos de interés salen. Palabra clave: "sin reposición". Como no hay independencia, la varianza es **menor** que la binomial equivalente.
 
 > [!warning] Cuidado con el recorrido
 > No siempre el máximo del recorrido es $n$ ni el mínimo es 0. El máximo es $\min\{M, n\}$ (lo que se agote primero: los elementos de interés o las extracciones). El mínimo es $\max\{n-(N-M), 0\}$: si los elementos "no interesantes" ($N-M$) son muy pocos frente a $n$, forzosamente saldrán algunos de interés. Si no se respetan estos límites, los combinatorios dan valores sin sentido (negativos o mayores al conjunto), por lo que valen 0.
@@ -330,29 +334,12 @@ Sea $Z \sim Ge(p)$, con $q = 1-p$. Entonces:
 
 $$\boxed{Z \sim Ge(p) \implies E(Z) = \frac{1}{p}, \quad V(Z) = \frac{1-p}{p^2}}$$
 
-### Apéndice: sumas parciales y series
+> [!info] ¿Cuándo usar la Geométrica?
+> Experimentos independientes con dos resultados que se repiten **hasta el primer éxito**; la variable cuenta **cuántos intentos** hicieron falta. Palabra clave: "hasta que ocurra por primera vez". El valor esperado $\tfrac{1}{p}$ es inversamente proporcional a $p$: si el éxito es raro, hacen falta más intentos.
 
-Para calcular $E(Z) = \sum_{k=1}^{+\infty} k \cdot q^{k-1} \cdot p$ necesitamos sumar **infinitos valores**. La idea es calcular **sumas parciales** hasta un valor alto y ver a qué valor se estabilizan:
-
-| $n=$ | 10 | 20 | 50 | 100 |
-|:-:|:-:|:-:|:-:|:-:|
-| $\sum_{k=1}^{n} k \, q^{k-1} p$ | 2.4244 | 2.4992 | 2.5000 | 2.5000 |
-
-La suma se estabiliza en $2.5 = \tfrac{5}{2}$, por lo que $E(Z) = \tfrac{5}{2}$ (consistente con $\tfrac{1}{p} = \tfrac{1}{2/5}$).
-
-Formalmente esto se justifica con la **suma geométrica** y su derivada:
-
-$$\sum_{k=0}^{+\infty} q^k = \frac{1}{1-q} \quad (|q| < 1) \implies \sum_{k=0}^{+\infty} k \cdot q^{k-1} = \frac{1}{(1-q)^2}$$
-
-de donde $E(Z) = p \cdot \tfrac{1}{(1-q)^2} = \tfrac{p}{p^2} = \tfrac{1}{p}$.
-
-Para la varianza se necesita $E(Z^2)$, cuyas sumas parciales se estabilizan en 10:
-
-| $n=$ | 10 | 20 | 50 | 100 |
-|:-:|:-:|:-:|:-:|:-:|
-| $\sum_{k=1}^{n} k^2 q^{k-1} p$ | 9.0325 | 9.9814 | 10.0000 | 10.0000 |
-
-$$V(Z) = E(Z^2) - E^2(Z) = 10 - \left(\frac{5}{2}\right)^2 = \frac{15}{4} \implies \sigma(Z) = \frac{\sqrt{15}}{2}$$
+> [!note] Series útiles (para calcular los momentos)
+> Los momentos salen de sumar infinitos términos, que se estabilizan según la **suma geométrica** y su derivada:
+> $$\sum_{k=0}^{+\infty} q^k = \frac{1}{1-q}\ (|q|<1) \implies \sum_{k=0}^{+\infty} k\,q^{k-1} = \frac{1}{(1-q)^2}$$
 
 **Ganancia con esta estrategia** ($G = 3Z - 7$):
 
@@ -401,9 +388,11 @@ Sea $Y \sim Po(\lambda)$. Entonces:
 
 $$\boxed{Y \sim Po(\lambda) \implies E(Y) = \lambda, \quad V(Y) = \lambda}$$
 
-La demostración de $E(Y) = \lambda$ y $V(Y) = \lambda$ usa la **serie de Maclaurin** de $e^x$:
+> [!info] ¿Cuándo usar la Poisson?
+> Cuenta cuántas veces ocurre un evento en un intervalo (de tiempo, espacio, etc.) cuando se conoce sólo la **tasa media** $\lambda$ de ocurrencia. Sirve cuando **no** se conocen $n$ ni $p$ pero sí el promedio $\lambda = np$. Único parámetro, sin cota superior. Palabra clave: "en promedio ocurren $\lambda$ por...".
 
-$$\sum_{k=0}^{+\infty} \frac{x^k}{k!} = e^x$$
+> [!note] Serie útil (para los momentos)
+> Los momentos usan la **serie de Maclaurin** de la exponencial: $\sum_{k=0}^{+\infty} \frac{x^k}{k!} = e^x$.
 
 Para nuestro ejemplo, $E(X) = \lambda = 3$ y, como $p$ es pequeño, $V(X) = np(1-p) \approx \lambda \cdot 1 = 3$. Las probabilidades aproximadas son $P(X = k) \approx \tfrac{3^k}{k!} e^{-3}$.
 
